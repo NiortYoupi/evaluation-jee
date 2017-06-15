@@ -1,13 +1,13 @@
 package com.sopra.model;
 
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,8 +25,9 @@ public class Proposition {
 	@Column(name = "PRO_NUMERO")
 	private Character numero;
 	
-	@ManyToMany(mappedBy="propositions")
-	private List<Question> questions;
+	@ManyToOne
+	@JoinColumn(name="PRO_QUESTION_ID")
+	private Question question;
 
 	/**
 	 * @return the correct
@@ -35,19 +36,6 @@ public class Proposition {
 		return isCorrect;
 	}
 
-	/**
-	 * @return the questions
-	 */
-	public List<Question> getQuestions() {
-		return questions;
-	}
-
-	/**
-	 * @param questions the questions to set
-	 */
-	public void setQuestions(List<Question> questions) {
-		this.questions = questions;
-	}
 
 	/**
 	 * @param correct the correct to set
@@ -81,6 +69,22 @@ public class Proposition {
 	 * 
 	 */
 	public Proposition() {
+	}
+
+
+	/**
+	 * @return the question
+	 */
+	public Question getQuestion() {
+		return question;
+	}
+
+
+	/**
+	 * @param question the question to set
+	 */
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 	
 	

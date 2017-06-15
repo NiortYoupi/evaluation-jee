@@ -8,13 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -51,9 +47,7 @@ public class Question {
 		this.propositions = propositions;
 	}
 
-	@ManyToMany
-	@JoinTable(name = "qcm", uniqueConstraints = @UniqueConstraint(columnNames = { "QCM_QUESTION_ID",
-			"QCM_PROPOSITION_ID" }), joinColumns = @JoinColumn(name = "QCM_QUESTION_ID", referencedColumnName = "QUE_ID"), inverseJoinColumns = @JoinColumn(name = "QCM_PROPOSITION_ID", referencedColumnName = "PRO_ID"))
+	@OneToMany(mappedBy="question")
 	private List<Proposition> propositions;
 
 	@OneToMany(mappedBy = "question")
