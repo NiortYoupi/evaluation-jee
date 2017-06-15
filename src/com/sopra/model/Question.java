@@ -115,4 +115,11 @@ public class Question {
 		super();
 	}
 
+	/**
+	 * @return the reponses
+	 */
+	public List<Reponse> getReponses() {
+		return reponses;
+	}
+
 }
