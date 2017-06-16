@@ -55,8 +55,9 @@ public class SecurityFilter implements Filter {
 		myAcceptedURIs.add(new SecurityMatch("/erreur", SecurityType.Anonyme));
 		myAcceptedURIs.add(new SecurityMatch("/login", SecurityType.Anonyme));
 		
-		//Seulement les administrateurs
-		myAcceptedURIs.add(new SecurityMatch("/home", SecurityType.Administrateur));
+		//Seulement les utilisateurs connecté (en l'occurence seulement les administrateurs ici)
+		myAcceptedURIs.add(new SecurityMatch("/home", SecurityType.Logged));
+		myAcceptedURIs.add(new SecurityMatch("/logout", SecurityType.Logged));
 		
 		for (SecurityMatch forAcceptedURI : myAcceptedURIs)
 		{

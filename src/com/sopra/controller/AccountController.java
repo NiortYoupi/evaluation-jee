@@ -48,6 +48,12 @@ public class AccountController {
 		return "login";
 	}
 	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session){
+		session.invalidate();
+		return "redirect:login";
+	}
+	
 	@ModelAttribute("admin")
 	public Admin initPersonne() {
 		return new Admin();
