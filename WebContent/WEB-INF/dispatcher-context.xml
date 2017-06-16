@@ -12,6 +12,11 @@
   
   <mvc:annotation-driven/>
   
+  <!-- Permet de définir le dossier JS comme un dossier ressources -->
+  <mvc:resources mapping="/js/**" location="/js/" />
+  <mvc:resources mapping="/css/**" location="/css/" />
+  <mvc:resources mapping="/fonts/**" location="/fonts/" />
+  
   <bean id="viewResolver"
   	class="org.springframework.web.servlet.view.UrlBasedViewResolver">
   	<property name="viewClass"
@@ -23,7 +28,34 @@
   	<property name="definitions">
   	 <list>
   	   <value>/WEB-INF/tiles/layout.xml</value>
+  	   <value>/WEB-INF/tiles/erreur.xml</value>
+  	   <value>/WEB-INF/tiles/account.xml</value>
+  	   <value>/WEB-INF/tiles/home.xml</value>
   	 </list>
   	</property>
+  </bean>
+  
+    <!-- Internationalisation -->
+  <bean id="messageSource"
+    class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    <property name="basename" value="classpath:messages" />
+    <property name="defaultEncoding" value="UTF-8" />
+  </bean>
+
+  <!-- Interceptor permettant de changer de langue par défaut -->
+  <mvc:interceptors>
+    <mvc:interceptor>
+      <mvc:mapping path="/**" />
+      <bean id="localeChangeInterceptor"
+        class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+        <property name="paramName" value="lang" />
+      </bean>
+    </mvc:interceptor>
+  </mvc:interceptors>
+
+  <bean id="localeResolver"
+    class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+    <property name="cookieName" value="lang" />
+    <property name="defaultLocale" value="fr" />
   </bean>
 </beans>
