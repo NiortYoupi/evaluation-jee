@@ -32,7 +32,7 @@
       <tiles:insertAttribute name="body" />
     </div>
     
-  <script type="text/javascript" src="/evaluation-jee/css/materialize.min.css"></script> 
+  <script type="text/javascript" src="/evaluation-jee/js/materialize.min.js"></script> 
   <script <tiles:insertAttribute name="js" /> ></script>    
   </body>
 </html>
