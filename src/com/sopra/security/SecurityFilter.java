@@ -58,6 +58,7 @@ public class SecurityFilter implements Filter {
 		//Seulement les utilisateurs connecté (en l'occurence seulement les administrateurs ici)
 		myAcceptedURIs.add(new SecurityMatch("/home", SecurityType.Logged));
 		myAcceptedURIs.add(new SecurityMatch("/logout", SecurityType.Logged));
+		myAcceptedURIs.add(new SecurityMatch("/candidats", SecurityType.Logged));
 		
 		for (SecurityMatch forAcceptedURI : myAcceptedURIs)
 		{
