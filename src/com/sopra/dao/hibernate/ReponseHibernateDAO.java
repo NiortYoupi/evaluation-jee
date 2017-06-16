@@ -8,5 +8,8 @@ import com.sopra.model.Reponse;
 @Repository
 @Transactional
 public class ReponseHibernateDAO extends DAOHibernate<Reponse, Integer> {
-
+public ReponseHibernateDAO() {
+	this.maClasse=Reponse.class;
+	this.maClasseString="Reponse";
+}
 }

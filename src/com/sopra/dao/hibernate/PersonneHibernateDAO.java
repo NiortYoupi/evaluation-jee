@@ -10,4 +10,8 @@ import com.sopra.model.Personne;
 @Transactional
 public class PersonneHibernateDAO extends DAOHibernate<Personne, String> implements IPersonneDAO{
 
+	public PersonneHibernateDAO() {
+		this.maClasse = Personne.class;
+		this.maClasseString = "Personne";
+	}
 }

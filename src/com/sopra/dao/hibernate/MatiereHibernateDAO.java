@@ -10,5 +10,10 @@ import com.sopra.model.Matiere;
 @Transactional
 public class MatiereHibernateDAO extends DAOHibernate<Matiere, Integer> implements IMatiereDAO {
 
+public MatiereHibernateDAO() {
+	this.maClasse = Matiere.class;
+	this.maClasseString = "Matiere";
+}
+
 
 }

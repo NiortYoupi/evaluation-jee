@@ -9,5 +9,8 @@ import com.sopra.model.Proposition;
 @Repository
 @Transactional
 public class PropositionHibernateDAO extends DAOHibernate<Proposition, Integer> implements IPropositionDAO{
-
+	public PropositionHibernateDAO() {
+		this.maClasse = Proposition.class;
+		this.maClasseString = "Proposition";
+	}
 }

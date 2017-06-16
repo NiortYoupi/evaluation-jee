@@ -9,5 +9,8 @@ import com.sopra.model.Questionnaire;
 @Repository
 @Transactional
 public class QuestionnaireHibernateDAO extends DAOHibernate<Questionnaire, Integer> implements IQuestionnaireDAO{
-
+public QuestionnaireHibernateDAO() {
+	this.maClasse = Questionnaire.class;
+	this.maClasseString = "Questionnaire";
+}
 }
