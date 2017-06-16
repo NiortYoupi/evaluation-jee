@@ -1,11 +1,14 @@
 package com.sopra.dao.hibernate;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sopra.dao.IPersonneDAO;
 import com.sopra.exception.WrongUsernameOrPasswordException;
 import com.sopra.model.Admin;
+import com.sopra.model.Candidat;
 import com.sopra.model.Personne;
 
 @Repository
@@ -29,6 +32,11 @@ public class PersonneHibernateDAO extends DAOHibernate<Personne, String> impleme
 			e.printStackTrace();
 			throw new WrongUsernameOrPasswordException();
 		}
+	}
+	
+	@Override
+	public List<Candidat> findAllCandidats() {
+		return this.em.createQuery("from Candidat c", Candidat.class).getResultList();
 	}
 
 }
