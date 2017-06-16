@@ -14,6 +14,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sopra.model.constantes.ConstanteServlet;
+
 /**
  * Servlet Filter implementation class SecurityFilter
  */
@@ -51,14 +53,14 @@ public class SecurityFilter implements Filter {
 		myAcceptedURIs.add(new SecurityMatch("fonts/", SecurityType.Anonyme));
 		myAcceptedURIs.add(new SecurityMatch("/api", SecurityType.Anonyme));
 		myAcceptedURIs.add(new SecurityMatch("/erreur", SecurityType.Anonyme));
-		myAcceptedURIs.add(new SecurityMatch("/account/login", SecurityType.Anonyme));
+		myAcceptedURIs.add(new SecurityMatch("/login", SecurityType.Anonyme));
 		
 		//Seulement les administrateurs
 		myAcceptedURIs.add(new SecurityMatch("/home", SecurityType.Administrateur));
 		
 		for (SecurityMatch forAcceptedURI : myAcceptedURIs)
 		{
-			if (forAcceptedURI.isLogged(myURI, (SecurityPersonne)request.getSession().getAttribute("utilisateur")))
+			if (forAcceptedURI.isLogged(myURI, (SecurityPersonne)request.getSession().getAttribute(ConstanteServlet.user)))
 			{
 				needSecurityCheck = false;
 				break;

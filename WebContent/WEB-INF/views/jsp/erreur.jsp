@@ -1,7 +1,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <p><spring:message code="error.texte" /></p>
 
-<form method="GET" action="account/login">
+<form method="GET" action="login">
     <button class="btn waves-effect waves-light" type="submit" name="action"><spring:message code="error.login" />
       <i class="material-icons right">send</i>
     </button>
